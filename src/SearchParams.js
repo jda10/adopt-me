@@ -1,0 +1,58 @@
+import { useState } from "react";
+
+const animals = ['bird', 'cat', 'dog', 'reptile', ]
+
+const SearchParams = () => {
+
+    const [location, setLocation] = useState("Seattle, WA")
+    const [animal, setAnimal] = useState("");
+    const [breed, setBreed] = useState("");
+
+    const breeds = [];
+
+     
+    return (
+        <div className="search-params">
+
+            <form>
+                <label htmlFor="location">
+                    Location
+                    <input id="location"
+                    onChange={e => setLocation(e.target.value)} 
+                    placeholder="Location"
+                    value={location}></input>
+                    <button>Submit</button>
+                </label>
+                <br></br>
+                <label htmlFor="animal">Animal
+                <select id="animal"
+                    value={animal} 
+                    onChange={e => setAnimal(e.target.value)} 
+                    onBlur={e => setAnimal(e.target.value)}>
+                    {
+                        animals.map(animal => (
+                            <option value={animal} key={animal}>{animal}</option>
+                        ))
+                    }
+                </select>
+                </label>
+                <label htmlFor="animal">Breed
+                <select id="animal"
+                    value={breed} 
+                    onChange={e => setBreed(e.target.value)} 
+                    onBlur={e => setBreed(e.target.value)}>
+                    {
+                        breeds.map(breed => (
+                            <option value={breed} key={breed}>{breed}</option>
+                        ))
+                    }
+                </select>
+                </label>
+            </form>
+
+        </div>
+    )
+}
+
+
+export default SearchParams;
